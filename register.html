@@ -258,81 +258,14 @@
                 <h2>International Participants</h2>
                 <span class="region-badge">Google Workspace</span>
             </div>
-            <p style="margin-bottom:1.5rem;color:#555;">For attendees outside mainland China. Data is stored securely via Google Sheets.</p>
-            <form id="intlForm">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" placeholder="e.g., Greg McShane" required>
-                </div>
-                <div class="form-group">
-                    <label for="affiliation">Affiliation / Institution</label>
-                    <input type="text" id="affiliation" name="affiliation" placeholder="e.g., Institut Fourier">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" placeholder="greg.mcshane@gmail.com" required>
-                </div>
-                <button type="submit" class="btn-submit">
-                    <span>Submit Registration</span>
-                    <span style="font-size:1.1rem;">→</span>
-                </button>
-                <div id="formMessage" class="message"></div>
-            </form>
+            <p style="margin-bottom:1.5rem;color:#555;">For attendees outside mainland China. Data is stored securely via Google Forms.</p>
+
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9M2mmcarshcFIIQeNrs0eqFQ2JF4XFApzHnOG390bUc5YyA/viewform?embedded=true" width="680" height="1000" frameborder="0" marginheight="0" marginwidth="0">正在加载…</iframe>
         </div>
 
         <div class="footer-note">
             Need help? <a href="mailto:secretariat@icis2026.org">Contact the organizers</a> · Hyperbolic 2026
         </div>
     </div>
-
-    <!-- ========= 数据提交脚本（海外用户 → Google Sheets） ========= -->
-    <script>
-        // 将此处替换为你的 Google Apps Script 部署网址
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqTyp5TY6z-dtyj5Nd28yhcQS-aF7700xjOBA1ZFEOv0RaP7rywqs7bTLzaLVqz-E/exec';
-        
-        const form = document.getElementById('intlForm');
-        const msgDiv = document.getElementById('formMessage');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const affiliation = document.getElementById('affiliation').value.trim();
-            const email = document.getElementById('email').value.trim();
-
-            if (!name || !email) {
-                showMessage('Please fill in at least name and email.', 'error');
-                return;
-            }
-
-            // 发送数据到 Google Sheets（海外可用）
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, affiliation, email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    showMessage('✅ Registration successful! A confirmation will be sent to your email.', 'success');
-                    form.reset();
-                } else {
-                    showMessage('Server error. Please try again or contact us directly.', 'error');
-                }
-            })
-            .catch(error => {
-                showMessage('Network error. Please check your connection and try again.', 'error');
-                console.error(error);
-            });
-        });
-
-        function showMessage(text, type) {
-            msgDiv.textContent = text;
-            msgDiv.className = 'message ' + type;
-            msgDiv.style.display = 'block';
-            // 5 秒后自动隐藏
-            setTimeout(() => { msgDiv.style.display = 'none'; }, 5000);
-        }
-    </script>
 </body>
 </html>
