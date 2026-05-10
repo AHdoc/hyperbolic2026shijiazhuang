@@ -16,14 +16,9 @@
             --radius-lg: 22px;
             --text-dark: #1a1a1a;
             --text-mid: #4a4a4a;
-            --overlay: rgba(0, 0, 0, 0.55);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -33,11 +28,10 @@
             align-items: center;
             color: var(--text-dark);
             position: relative;
-            background: #111; /* fallback */
+            background: #111;
             padding: 2rem 1.5rem 3rem;
         }
 
-        /* Full‑screen poster background with dark overlay for readability */
         body::before {
             content: "";
             position: fixed;
@@ -50,7 +44,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            filter: brightness(1.00);
+            filter: brightness(1);
             z-index: 0;
         }
 
@@ -61,7 +55,6 @@
             max-width: 900px;
         }
 
-        /* Back link */
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -79,15 +72,9 @@
             border-radius: 40px;
             width: fit-content;
         }
-        .back-link:hover {
-            opacity: 0.85;
-            background: rgba(255,255,255,0.2);
-        }
+        .back-link:hover { opacity: 0.85; background: rgba(255,255,255,0.2); }
 
-        /* Page header */
-        .page-header {
-            margin-bottom: 2.5rem;
-        }
+        .page-header { margin-bottom: 2.5rem; }
         .page-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
@@ -104,7 +91,6 @@
             text-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
 
-        /* Card style */
         .card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -113,12 +99,7 @@
             margin-bottom: 2rem;
             box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.3);
-            transition: transform 0.2s ease;
         }
-        .card:hover {
-            transform: translateY(-2px);
-        }
-
         .card h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -131,11 +112,8 @@
             align-items: center;
             gap: 0.6rem;
         }
-        .card h2 .icon {
-            font-size: 1.6rem;
-        }
+        .card h2 .icon { font-size: 1.6rem; }
 
-        /* Name lists */
         .name-list {
             list-style: none;
             padding: 0;
@@ -144,12 +122,9 @@
             gap: 0.8rem 1.5rem;
         }
         .name-list li {
-            font-size: 0.98rem;
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
-            column-gap: 0.3rem;
-            color: var(--text-mid);
             line-height: 1.5;
         }
         .name-list li strong {
@@ -159,6 +134,7 @@
         .affiliation {
             font-size: 0.85rem;
             color: #6b6b6b;
+            width: 100%;      /* ensure line break behaviour is clean */
         }
 
         .note {
@@ -170,7 +146,6 @@
             padding-left: 1rem;
         }
 
-        /* Table schedule */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -193,18 +168,9 @@
             color: var(--text-mid);
             vertical-align: top;
         }
-        .schedule-table tbody tr:hover td {
-            background: rgba(200, 164, 92, 0.08);
-        }
-        .time-slot {
-            font-weight: 600;
-            color: var(--primary);
-            white-space: nowrap;
-        }
-        .talk-title {
-            font-style: italic;
-            color: #5e5e5e;
-        }
+        .schedule-table tbody tr:hover td { background: rgba(200, 164, 92, 0.08); }
+        .time-slot { font-weight: 600; color: var(--primary); white-space: nowrap; }
+        .talk-title { font-style: italic; color: #5e5e5e; }
 
         footer {
             margin-top: 2rem;
@@ -215,28 +181,12 @@
         }
 
         @media (max-width: 640px) {
-            .page-title {
-                font-size: 2.2rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            .name-list {
-                grid-template-columns: 1fr;
-            }
-            .schedule-table thead {
-                display: none;
-            }
-            .schedule-table tbody tr {
-                display: block;
-                margin-bottom: 1rem;
-            }
-            .schedule-table tbody td {
-                display: block;
-                text-align: right;
-                padding-left: 50%;
-                position: relative;
-            }
+            .page-title { font-size: 2.2rem; }
+            .card { padding: 1.5rem; }
+            .name-list { grid-template-columns: 1fr; }
+            .schedule-table thead { display: none; }
+            .schedule-table tbody tr { display: block; margin-bottom: 1rem; }
+            .schedule-table tbody td { display: block; text-align: right; padding-left: 50%; position: relative; }
             .schedule-table tbody td::before {
                 content: attr(data-label);
                 position: absolute;
@@ -261,12 +211,12 @@
         <div class="card">
             <h2><span class="icon">🧪</span> Scientific Committee</h2>
             <ul class="name-list">
-                <li><strong>Hugo Parlier</strong>&nbsp;<span class="affiliation">University of Fribourg</span></li>
-                <li><strong>Ser Peow Tan</strong>&nbsp;<span class="affiliation">National University of Singapore</span></li>
-                <li><strong>Hidetoshi Masai</strong>&nbsp;<span class="affiliation">Musashino Art University</span></li>
-                <li><strong>Xiaobing Sheng</strong>&nbsp;<span class="affiliation">Osaka University</span></li>
-                <li><strong>Binbin Xu</strong>&nbsp;<span class="affiliation">Hebei Normal University</span></li>
-                <li><strong>Yibo Zhang</strong>&nbsp;<span class="affiliation">Sun Yat‑sen University</span></li>
+                <li><strong>Hugo Parlier</strong><br><span class="affiliation">University of Fribourg</span></li>
+                <li><strong>Ser Peow Tan</strong><br><span class="affiliation">National University of Singapore</span></li>
+                <li><strong>Hidetoshi Masai</strong><br><span class="affiliation">Musashino Art University</span></li>
+                <li><strong>Xiaobing Sheng</strong><br><span class="affiliation">Osaka University</span></li>
+                <li><strong>Binbin Xu</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                <li><strong>Yibo Zhang</strong><br><span class="affiliation">Sun Yat‑sen University</span></li>
             </ul>
         </div>
 
@@ -274,10 +224,10 @@
         <div class="card">
             <h2><span class="icon">📋</span> Organizers</h2>
             <ul class="name-list">
-                <li><strong>Hidetoshi Masai</strong>&nbsp;<span class="affiliation">Musashino Art University</span></li>
-                <li><strong>Xiaobing Sheng</strong>&nbsp;<span class="affiliation">Osaka University</span></li>
-                <li><strong>Binbin Xu</strong>&nbsp;<span class="affiliation">Hebei Normal University</span></li>
-                <li><strong>Yibo Zhang</strong>&nbsp;<span class="affiliation">Sun Yat‑sen University</span></li>
+                <li><strong>Hidetoshi Masai</strong><br><span class="affiliation">Musashino Art University</span></li>
+                <li><strong>Xiaobing Sheng</strong><br><span class="affiliation">Osaka University</span></li>
+                <li><strong>Binbin Xu</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                <li><strong>Yibo Zhang</strong><br><span class="affiliation">Sun Yat‑sen University</span></li>
             </ul>
         </div>
 
@@ -285,31 +235,31 @@
         <div class="card">
             <h2><span class="icon">🎤</span> Speakers</h2>
             <ul class="name-list">
-                <li><strong>Ara Basmajian</strong>&nbsp;<span class="affiliation">Hunter College / CUNY</span></li>
-                <li><strong>Qiyu Chen</strong>&nbsp;<span class="affiliation">South China Univ. of Technology</span></li>
-                <li><strong>Nhat Minh Doan</strong>&nbsp;<span class="affiliation">Vietnam Academy of Science & Technology</span></li>
-                <li><strong>Eriko Hironaka</strong>&nbsp;<span class="affiliation">Florida State University</span></li>
-                <li><strong>Yi Huang</strong>&nbsp;<span class="affiliation">YMSC, Tsinghua University</span></li>
-                <li><strong>Inkang Kim</strong>&nbsp;<span class="affiliation">KIAS</span></li>
-                <li><strong>Youngju Kim</strong>&nbsp;<span class="affiliation">Konkuk University</span></li>
-                <li><strong>Teruaki Kitano</strong>&nbsp;<span class="affiliation">Soka University</span></li>
-                <li><strong>Sadayoshi Kojima</strong>&nbsp;<span class="affiliation">Institute of Science Tokyo</span></li>
-                <li><strong>Vladimir Markovic</strong>&nbsp;<span class="affiliation">YMSC, Tsinghua University</span></li>
-                <li><strong>Hidetoshi Masai</strong>&nbsp;<span class="affiliation">Musashino Art University</span></li>
-                <li><strong>Hideki Miyachi</strong>&nbsp;<span class="affiliation">Kanazawa University</span></li>
-                <li><strong>John Parker</strong>&nbsp;<span class="affiliation">Durham University</span></li>
-                <li><strong>Hugo Parlier</strong>&nbsp;<span class="affiliation">University of Fribourg</span></li>
-                <li><strong>Alan Reid (*)</strong>&nbsp;<span class="affiliation">Rice University</span></li>
-                <li><strong>Makoto Sakuma</strong>&nbsp;<span class="affiliation">Hiroshima University</span></li>
-                <li><strong>Xiaobing Sheng</strong>&nbsp;<span class="affiliation">Osaka University</span></li>
-                <li><strong>Weixu Su</strong>&nbsp;<span class="affiliation">Sun Yat‑sen University</span></li>
-                <li><strong>Lijie Sun</strong>&nbsp;<span class="affiliation">Osaka Metropolitan University</span></li>
-                <li><strong>Zhe Sun</strong>&nbsp;<span class="affiliation">USTC</span></li>
-                <li><strong>Ser Peow Tan</strong>&nbsp;<span class="affiliation">National University of Singapore</span></li>
-                <li><strong>Hanh Vo</strong>&nbsp;<span class="affiliation">Purdue University</span></li>
-                <li><strong>Yasushi Yamashita</strong>&nbsp;<span class="affiliation">Chuo University</span></li>
-                <li><strong>Yibo Zhang</strong>&nbsp;<span class="affiliation">Sun Yat‑sen University</span></li>
-                <li><strong>Fangting Zheng</strong>&nbsp;<span class="affiliation">Xi'an Jiaotong‑Liverpool University</span></li>
+                <li><strong>Ara Basmajian</strong><br><span class="affiliation">Hunter College / CUNY</span></li>
+                <li><strong>Qiyu Chen</strong><br><span class="affiliation">South China Univ. of Technology</span></li>
+                <li><strong>Nhat Minh Doan</strong><br><span class="affiliation">Vietnam Academy of Science & Technology</span></li>
+                <li><strong>Eriko Hironaka</strong><br><span class="affiliation">Florida State University</span></li>
+                <li><strong>Yi Huang</strong><br><span class="affiliation">YMSC, Tsinghua University</span></li>
+                <li><strong>Inkang Kim</strong><br><span class="affiliation">KIAS</span></li>
+                <li><strong>Youngju Kim</strong><br><span class="affiliation">Konkuk University</span></li>
+                <li><strong>Teruaki Kitano</strong><br><span class="affiliation">Soka University</span></li>
+                <li><strong>Sadayoshi Kojima</strong><br><span class="affiliation">Institute of Science Tokyo</span></li>
+                <li><strong>Vladimir Markovic</strong><br><span class="affiliation">YMSC, Tsinghua University</span></li>
+                <li><strong>Hidetoshi Masai</strong><br><span class="affiliation">Musashino Art University</span></li>
+                <li><strong>Hideki Miyachi</strong><br><span class="affiliation">Kanazawa University</span></li>
+                <li><strong>John Parker</strong><br><span class="affiliation">Durham University</span></li>
+                <li><strong>Hugo Parlier</strong><br><span class="affiliation">University of Fribourg</span></li>
+                <li><strong>Alan Reid (*)</strong><br><span class="affiliation">Rice University</span></li>
+                <li><strong>Makoto Sakuma</strong><br><span class="affiliation">Hiroshima University</span></li>
+                <li><strong>Xiaobing Sheng</strong><br><span class="affiliation">Osaka University</span></li>
+                <li><strong>Weixu Su</strong><br><span class="affiliation">Sun Yat‑sen University</span></li>
+                <li><strong>Lijie Sun</strong><br><span class="affiliation">Osaka Metropolitan University</span></li>
+                <li><strong>Zhe Sun</strong><br><span class="affiliation">USTC</span></li>
+                <li><strong>Ser Peow Tan</strong><br><span class="affiliation">National University of Singapore</span></li>
+                <li><strong>Hanh Vo</strong><br><span class="affiliation">Purdue University</span></li>
+                <li><strong>Yasushi Yamashita</strong><br><span class="affiliation">Chuo University</span></li>
+                <li><strong>Yibo Zhang</strong><br><span class="affiliation">Sun Yat‑sen University</span></li>
+                <li><strong>Fangting Zheng</strong><br><span class="affiliation">Xi'an Jiaotong‑Liverpool University</span></li>
             </ul>
             <p class="note">(*) to be confirmed</p>
         </div>
