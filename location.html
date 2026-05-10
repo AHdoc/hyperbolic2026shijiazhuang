@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Hyperbolic 2026 Shijiazhuang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3c5e;
+            --accent: #c8a45c;
+            --white: #ffffff;
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --radius-lg: 22px;
+            --text-dark: #1a1a1a;
+            --text-mid: #4a4a4a;
+            --overlay: rgba(0, 0, 0, 0.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-dark);
+            position: relative;
+            background: #111; /* fallback */
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        /* Full‑screen poster background with dark overlay for readability */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./poster.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: brightness(1.00);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: opacity 0.2s;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            width: fit-content;
+        }
+        .back-link:hover {
+            opacity: 0.85;
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Page header */
+        .page-header {
+            margin-bottom: 2.5rem;
+        }
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            font-weight: 400;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Card style */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card h2 .icon {
+            font-size: 1.6rem;
+        }
+
+        /* Name lists */
+        .name-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.8rem 1.5rem;
+        }
+        .name-list li {
+            font-size: 0.98rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            column-gap: 0.3rem;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+        .name-list li strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .affiliation {
+            font-size: 0.85rem;
+            color: #6b6b6b;
+        }
+
+        .note {
+            font-style: italic;
+            margin-top: 1rem;
+            color: #555;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* Table schedule */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        .schedule-table thead th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .schedule-table tbody td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #e0ddd4;
+            color: var(--text-mid);
+            vertical-align: top;
+        }
+        .schedule-table tbody tr:hover td {
+            background: rgba(200, 164, 92, 0.08);
+        }
+        .time-slot {
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        .talk-title {
+            font-style: italic;
+            color: #5e5e5e;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 640px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .name-list {
+                grid-template-columns: 1fr;
+            }
+            .schedule-table thead {
+                display: none;
+            }
+            .schedule-table tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+            }
+            .schedule-table tbody td {
+                display: block;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .schedule-table tbody td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                width: 45%;
+                font-weight: 600;
+                color: var(--primary);
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./" class="back-link">← Back to Home</a>
+
+        <div class="page-header">
+            <p class="page-subtitle">Location · Transport</p>
+        </div>
+
+
+
+        <footer>
+            Hosted by Hebei Normal University· <a href="mailto:binbin.xu@hebtu.edu.cn" style="color:rgba(255,255,255,0.9);">Contact us</a>
+        </footer>
+    </div>
+</body>
+</html>
