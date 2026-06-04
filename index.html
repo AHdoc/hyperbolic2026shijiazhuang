@@ -58,14 +58,9 @@
             background-size: cover;
             z-index: -3;
             background-color: #1a1a1a;
-            animation: slowZoom 30s ease-in-out infinite alternate;
-            transform-origin: center;
-            will-change: transform;
+            /* Background kept static for performance */
         }
-        @keyframes slowZoom {
-            0%   { transform: scale(1); }
-            100% { transform: scale(1.08); }
-        }
+        
 
         /* =============================================
            PARTICLE CANVAS
@@ -110,8 +105,8 @@
             opacity: 1;
             transform: translateY(0);
             background: rgba(20, 20, 20, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .navbar-brand {
@@ -180,7 +175,7 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--gold);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             display: inline-block;
             padding-bottom: 0.35rem;
             border-bottom: 1px solid rgba(224,199,138,0.5);
@@ -191,23 +186,39 @@
             font-weight: 700;
             line-height: 1.15;
             text-shadow: 2px 2px 14px rgba(0,0,0,0.8), 0 0 25px var(--gold-glow);
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
             letter-spacing: -0.02em;
             max-width: 900px;
         }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            font-weight: 300;
-            text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            line-height: 1.7;
+        /* Highlight "Remarkable" in English title */
+        .hero h1 .highlight {
+            color: var(--gold);
+            font-style: italic;
+            text-shadow: 0 0 15px var(--gold-glow), 2px 2px 14px rgba(0,0,0,0.8);
         }
-        .honouree {
+        /* Chinese title - slightly smaller */
+        .hero-title-cn {
+            font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.92);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.08em;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+        }
+        .hero-title-cn .highlight {
             color: var(--gold);
             font-weight: 600;
-            font-style: italic;
-            text-shadow: 0 0 12px var(--gold-glow);
+            text-shadow: 0 0 12px var(--gold-glow), 1px 1px 10px rgba(0,0,0,0.7);
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+            margin-bottom: 1.8rem;
+            opacity: 0.85;
+            line-height: 1.7;
+            letter-spacing: 0.03em;
         }
         .event-date {
             display: block;
@@ -236,7 +247,7 @@
             border-radius: 50px;
             transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
             letter-spacing: 0.02em;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(6px);
             cursor: pointer;
             border: none;
         }
@@ -313,7 +324,7 @@
            SECTIONS
         ============================================= */
         .section {
-            padding: 5rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -321,7 +332,7 @@
         /* Section headers -- white text on poster */
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         .section-header h2 {
             font-family: 'Playfair Display', serif;
@@ -347,12 +358,12 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--gold);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             padding: 0.3rem 1rem;
             border: 1px solid rgba(224,199,138,0.35);
             border-radius: 50px;
             background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(2px);
         }
 
         /* =============================================
@@ -360,12 +371,12 @@
         ============================================= */
         .card {
             background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border-radius: var(--radius-lg);
-            padding: 2.2rem 2.5rem;
-            margin-bottom: 1.8rem;
-            box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.15);
+            padding: 1.6rem 2rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
             border: 1px solid rgba(255,255,255,0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
@@ -374,22 +385,22 @@
         .card.visible {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card:nth-child(2).visible { transition-delay: 0.08s; }
         .card:nth-child(3).visible { transition-delay: 0.16s; }
         .card:nth-child(4).visible { transition-delay: 0.24s; }
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.25);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
         }
         .card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
             border-bottom: 2px solid var(--accent);
             display: flex;
             align-items: center;
@@ -405,7 +416,7 @@
             padding: 0;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 0.9rem 1.5rem;
+            gap: 0.5rem 1.2rem;
         }
         .name-list li {
             font-size: 0.97rem;
@@ -439,7 +450,7 @@
         ============================================= */
         .schedule-placeholder {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 2rem 2rem;
             background: linear-gradient(135deg, rgba(26,60,94,0.06) 0%, rgba(200,164,92,0.1) 100%);
             border-radius: var(--radius-md);
             border: 2px dashed rgba(200,164,92,0.3);
@@ -463,7 +474,7 @@
         .timeline-item {
             display: flex;
             gap: 1.5rem;
-            padding: 1.2rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid #e8e4da;
             transition: background 0.2s;
         }
@@ -495,7 +506,7 @@
         .location-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .location-info p {
             color: var(--text-mid);
@@ -545,15 +556,15 @@
         .reg-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .reg-card {
             background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
             border: 1px solid rgba(255,255,255,0.25);
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -563,12 +574,12 @@
         .reg-card.visible {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .reg-card:nth-child(2).visible { transition-delay: 0.12s; }
         .reg-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.25);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
         }
         .reg-card .flag-icon { font-size: 3rem; margin-bottom: 1rem; }
         .reg-card h3 {
@@ -620,7 +631,7 @@
         ============================================= */
         .site-footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 2rem 2rem;
             color: rgba(255,255,255,0.65);
             font-size: 0.88rem;
             border-top: 1px solid rgba(255,255,255,0.08);
@@ -646,7 +657,7 @@
             display: flex;
             justify-content: center;
             gap: 3rem;
-            padding: 2.5rem;
+            padding: 1.5rem;
             background: rgba(255,255,255,0.07);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -681,24 +692,26 @@
                 position: absolute;
                 top: 100%; left: 0; right: 0;
                 background: rgba(20, 20, 20, 0.95);
-                backdrop-filter: blur(20px);
+                backdrop-filter: blur(12px);
                 flex-direction: column;
                 padding: 1rem;
                 gap: 0.3rem;
             }
             .nav-links.open { display: flex; }
             .mobile-menu-btn { display: block; }
-            .section { padding: 3rem 1rem; }
+            .section { padding: 2rem 1rem; }
             .location-grid, .reg-grid { grid-template-columns: 1fr; }
             .stats-bar { gap: 1.5rem; flex-wrap: wrap; }
             .stat-number { font-size: 2rem; }
-            .card { padding: 1.6rem 1.4rem; }
+            .card { padding: 1.3rem 1.2rem; }
             .name-list { grid-template-columns: 1fr; }
             .timeline-item { flex-direction: column; gap: 0.3rem; }
             .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
             .btn { justify-content: center; }
         }
     </style>
+<base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -724,9 +737,11 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="conference-series">Conference on Frontiers of Mathematics</div>
-            <h1>Remarkable Developments on Hyperbolic Geometry</h1>
+            <h1><span class="highlight">Remarkable</span> Developments on Hyperbolic Geometry</h1>
+            <div class="hero-title-cn">
+                &#21069;&#27839;&#25968;&#23398;&#30740;&#35752;&#20250; &mdash;&mdash; &#21452;&#26354;&#20960;&#20309;&#30340;<span class="highlight">&#32477;&#22937;</span>&#36827;&#23637;
+            </div>
             <p class="hero-subtitle">
-                in honour of <span class="honouree">Greg McShane</span>'s 60th birthday<br>
                 <span class="event-date">August 31 &ndash; September 4, 2026 &bull; Shijiazhuang, China</span>
             </p>
             <div class="hero-buttons">
@@ -764,8 +779,12 @@
                     <span class="stat-label">Committee</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-number" data-target="8">0</span>
                     <span class="stat-label">Organizers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="87">0</span>
+                    <span class="stat-label">Days to Go</span>
                 </div>
             </div>
         </section>
@@ -775,7 +794,6 @@
             <div class="section-header">
                 <span class="section-label">Program</span>
                 <h2>Speakers &amp; Committee</h2>
-                <p class="section-subtitle">World-class mathematicians gathering to celebrate hyperbolic geometry and Greg McShane's contributions.</p>
             </div>
 
             <div class="card">
@@ -793,9 +811,13 @@
             <div class="card">
                 <h3><span class="icon">&#128203;</span> Organizers</h3>
                 <ul class="name-list">
+                    <li><strong>Richeng Li</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                    <li><strong>Xiang Liu</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Hidetoshi Masai</strong><br><span class="affiliation">Musashino Art University</span></li>
                     <li><strong>Xiaobing Sheng</strong><br><span class="affiliation">Osaka University</span></li>
+                    <li><strong>Jun Wang</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Binbin Xu</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                    <li><strong>Liping Yuan</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Yibo Zhang</strong><br><span class="affiliation">Sun Yat-sen University</span></li>
                 </ul>
             </div>
@@ -838,54 +860,104 @@
             <div class="section-header">
                 <span class="section-label">Agenda</span>
                 <h2>Schedule</h2>
-                <p class="section-subtitle">Five days of talks, discussions, and collaboration on the frontiers of hyperbolic geometry.</p>
             </div>
 
             <div class="card">
-                <h3><span class="icon">&#128197;</span> Conference Program</h3>
+                <h3><span class="icon">&#128197;</span> Tentative Conference Program</h3>
 
-                <div class="schedule-placeholder">
-                    <div class="coming-soon">Detailed Programme Coming Soon</div>
-                    <p>The full schedule with talk titles and abstracts will be announced shortly.</p>
-                </div>
+                <p style="font-size: 0.9rem; color: var(--text-mid); margin-bottom: 1.5rem; padding: 0.6rem 1rem; background: rgba(200,164,92,0.08); border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <strong>Note:</strong> This is a tentative arrangement. A more detailed schedule with speaker names and talk titles will be announced by email.
+                </p>
 
-                <div class="timeline" style="margin-top: 2rem;">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Aug 31</div>
-                        <div class="timeline-content">
-                            <h4>Day 1 &mdash; Opening &amp; Talks</h4>
-                            <p>Registration, opening remarks, and first series of talks</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 1</div>
-                        <div class="timeline-content">
-                            <h4>Day 2 &mdash; Research Talks</h4>
-                            <p>Full day of presentations by invited speakers</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 2</div>
-                        <div class="timeline-content">
-                            <h4>Day 3 &mdash; Research Talks</h4>
-                            <p>Continued presentations and collaborative discussions</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 3</div>
-                        <div class="timeline-content">
-                            <h4>Day 4 &mdash; Research Talks</h4>
-                            <p>Advanced topics and open problem sessions</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 4</div>
-                        <div class="timeline-content">
-                            <h4>Day 5 &mdash; Closing</h4>
-                            <p>Final talks, closing remarks, and farewell</p>
-                        </div>
-                    </div>
+                <div class="schedule-table-wrapper" style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: center;">
+                        <thead>
+                            <tr style="background: var(--primary); color: white;">
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2); min-width: 100px;">Time</th>
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2);">31-Aug<br><span style="font-size: 0.75rem; font-weight: 400;">Mon</span></th>
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2);">1-Sep<br><span style="font-size: 0.75rem; font-weight: 400;">Tue</span></th>
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2);">2-Sep<br><span style="font-size: 0.75rem; font-weight: 400;">Wed</span></th>
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2);">3-Sep<br><span style="font-size: 0.75rem; font-weight: 400;">Thu</span></th>
+                                <th style="padding: 0.6rem 0.4rem; border: 1px solid rgba(255,255,255,0.2);">4-Sep<br><span style="font-size: 0.75rem; font-weight: 400;">Fri</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">9:00–9:40</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Registration</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 6</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 12</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 15</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 21</td>
+                            </tr>
+                            <tr style="background: #fafafa;">
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">10:00–10:40</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 1</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 7</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 13</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 16</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 22</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">10:40–11:20</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                            </tr>
+                            <tr style="background: #fafafa;">
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">11:20–12:00</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 2</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 8</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 14</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 17</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 23</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0.5rem; border: 1px solid #e0e0e0; background: #fff3cd; color: #856404; font-weight: 600; font-size: 0.95rem;">Lunch</td>
+                            </tr>
+                            <tr style="background: #fafafa;">
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">14:00–14:40</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 3</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 9</td>
+                                <td rowspan="3" style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600; vertical-align: middle;">Free<br>discussion</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 18</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 24</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">14:40–15:20</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Coffee Break</td>
+                            </tr>
+                            <tr style="background: #fafafa;">
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">15:20–16:00</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 4</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 10</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 19</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 25</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; font-weight: 600; background: #f8f6f0;">16:20–17:00</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 5</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 11</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;"></td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0;">Speaker 20</td>
+                                <td style="padding: 0.5rem 0.3rem; border: 1px solid #e0e0e0; background: #d4edda; color: #155724; font-weight: 600;">Leaving</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0.5rem; border: 1px solid #e0e0e0; background: #fff3cd; color: #856404; font-weight: 600; font-size: 0.95rem;">Dinner</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <p style="text-align: center; margin-top: 1.2rem; font-size: 0.95rem; color: var(--text-mid);">
+                    For the title and abstract of all the talks, please visit 
+                    <a href="https://ahdoc.github.io/hyperbolic2026shijiazhuang/abstract" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600; text-decoration: underline;">the abstracts page</a>. 
+                    <br>(Currently empty, will be updated once we receive details from speakers.)
+                </p>
             </div>
         </section>
 
@@ -894,45 +966,118 @@
             <div class="section-header">
                 <span class="section-label">Venue</span>
                 <h2>Location &amp; Transport</h2>
-                <p class="section-subtitle">Join us at Hebei Normal University in the heart of Shijiazhuang.</p>
             </div>
 
             <div class="card">
+                <h3><span class="icon">&#127979;</span> Conference Venue</h3>
                 <div class="location-grid">
                     <div class="location-info">
-                        <h3 style="border-bottom: 2px solid var(--accent); padding-bottom: 0.6rem; margin-bottom: 1.2rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary);">&#127979; Conference Venue</h3>
                         <p>
-                            <strong style="color: var(--text-dark);">Hebei Normal University</strong><br>
-                            Shijiazhuang, Hebei Province<br>
-                            People's Republic of China
+                            <strong style="color: var(--text-dark);">School of Mathematical Sciences</strong><br>
+                            Hebei Normal University<br>No. 20 South Erhuan East Road,<br>Shijiazhuang, Hebei 050024, China<br>
+                            <span style="font-size: 0.85rem; color: #6b6b6b;">河北省石家庄市南二环东路20号 · 邮编 050024</span>
                         </p>
-                        <p>The conference will be held on the main campus of Hebei Normal University, providing a vibrant academic setting for five days of mathematical exchange.</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Conference Hall, School of Mathematical Sciences<br>(room number to be confirmed).</p>
 
-                        <h4>&#9992; By Air</h4>
-                        <p>Shijiazhuang Zhengding International Airport (SJW) serves domestic and international flights. The airport is approximately 40 km from the city center.</p>
-
-                        <h4>&#128648; By High-Speed Rail</h4>
-                        <p>Shijiazhuang Railway Station is well-connected to major Chinese cities via high-speed rail (Beijing: ~1.5h, Shanghai: ~4h, Xi'an: ~3h).</p>
-
-                        <h4>&#127970; Accommodation</h4>
-                        <p>Information about recommended hotels near the university campus will be provided upon registration.</p>
+                        <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(200,164,92,0.08); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <strong style="color: var(--primary);">&#127968; Conference Hotel</strong><br>
+                            <strong>Guanhe International Hotel · 观和国际酒店</strong><br>
+                            <span style="font-size: 0.9rem;">Located at the east gate of Hebei Normal University<br>
+                            石家庄市裕华区裕翔街18号</span><br>
+                            <span style="font-size: 0.85rem; color: #6b6b6b;">&#128694; ~10 min walk to conference room<br>
+                            &#128661; ~10 min taxi from Shijiazhuang Train Station<br>
+                            &#128222; Tel: +86 311-8098 1166</span><br>
+                            <a href="https://www.trip.com/hotels/shijiazhuang-hotel-detail-827031/guanhe-international-hotel/" target="_blank" rel="noopener" style="color: var(--primary); font-size: 0.85rem; font-weight: 600;">Book Online &#8599;</a>
+                        </div>
                     </div>
 
                     <div class="location-map">
                         <div class="map-icon">&#127759;</div>
-                        <p style="color: var(--text-mid); font-size: 0.95rem; margin-bottom: 0.5rem;">Hebei Normal University<br>Shijiazhuang, China</p>
+                        <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            <strong>HEBNU Main Campus</strong><br>
+                            38.0093°N, 114.5212°E
+                        </p>
                         <a href="https://maps.google.com/?q=Hebei+Normal+University+Shijiazhuang" target="_blank" rel="noopener">Open in Google Maps &#8599;</a>
+                        <a href="https://ditu.amap.com/place/B01370SYC9" target="_blank" rel="noopener" style="margin-top: 0.5rem; display: inline-block; background: rgba(26,60,94,0.08); color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.5rem 1.2rem; border-radius: 50px; transition: all 0.3s;">Open in Amap (高德) &#8599;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">&#128739;</span> Travel &amp; Accommodation</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#9992; Option 1: Fly to Shijiazhuang</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">The most direct route is to fly to <strong>Shijiazhuang Zhengding International Airport</strong> (石家庄正定国际机场, SJW). Note that international flights may require a transfer to a domestic flight during your trip.</p>
+
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#9992; Option 2: Fly to Beijing, then Train</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">There are two international airports in Beijing. From either airport, you can take a high-speed train to Shijiazhuang.</p>
+
+                        <div style="margin: 0.6rem 0; padding: 0.6rem; background: rgba(200,164,92,0.08); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <strong style="color: var(--primary); font-size: 0.9rem;">Beijing Capital (PEK) · 首都机场</strong><br>
+                            <span style="font-size: 0.85rem; color: var(--text-mid);">Airport shuttle bus to <strong>Beijing West Railway Station</strong> (北京西站): ~1h 20min (traffic dependent). Many trains to Shijiazhuang daily. Last high-speed train departs at <strong>22:04</strong>. Journey time: <strong>1h – 1h 40min</strong>.</span>
+                        </div>
+
+                        <div style="margin: 0.6rem 0; padding: 0.6rem; background: rgba(200,164,92,0.08); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <strong style="color: var(--primary); font-size: 0.9rem;">Beijing Daxing (PKX) · 大兴机场</strong><br>
+                            <span style="font-size: 0.85rem; color: var(--text-mid);">One direct train to Shijiazhuang per day: departs <strong>20:03</strong>, arrives <strong>22:44</strong>. Alternatively, go to Beijing West Railway Station first by subway (~1h) or train (~20–35min), then take a regular high-speed train.</span>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: var(--text-mid); margin-top: 0.5rem;"><strong>Note:</strong> Please arrive at the train station gate at least <strong>5 minutes</strong> before departure.</p>
+
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#128648; Option 3: Already in China</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">If you are already visiting China, you may take a domestic flight or train directly to Shijiazhuang.</p>
+                    </div>
+
+                    <div>
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#128658; Pick-Up Service</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">We will collect your travel information in future emails.</p>
+                        <ul style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-left: 1.2rem; margin-top: 0.3rem;">
+                            <li>Pick-up service is available for everyone landing at <strong>Shijiazhuang Zhengding International Airport</strong>.</li>
+                            <li>For those flying to Beijing, we will help arrange your trip once we receive your travel details.</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#127970; Hotel: Guanhe International Hotel</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">All participants will stay at <strong>Guanhe International Hotel</strong> (观和国际酒店), located right at the east gate of the university.</p>
+                        <ul style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-left: 1.2rem; margin-top: 0.3rem;">
+                            <li>~10 min by taxi from <strong>Shijiazhuang Train Station</strong></li>
+                            <li>~10 min walk from hotel to the conference venue (School of Mathematical Sciences)</li>
+                        </ul>
+                        <a href="https://www.trip.com/hotels/shijiazhuang-hotel-detail-827031/guanhe-international-hotel/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 0.5rem; color: var(--primary); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.5rem 1.2rem; background: rgba(26,60,94,0.08); border-radius: 50px; transition: all 0.3s;">View Hotel Details &#8599;</a>
+
+                        <h4 style="color: var(--primary); font-weight: 600; margin: 0.8rem 0 0.4rem; display: flex; align-items: center; gap: 0.4rem;">&#128661; In-City Transportation</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;">Shijiazhuang has a developed metro and bus network. <strong>Taxi</strong> and ride-hailing services (Didi) are widely available; bilingual address cards will be provided.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        
 
         <!-- ====== REGISTRATION ====== -->
         <section class="section" id="register">
             <div class="section-header">
                 <span class="section-label">Join Us</span>
                 <h2>Registration</h2>
-                <p class="section-subtitle">Choose your region to register for the conference. Both methods lead to the same conference.</p>
+                <p class="section-subtitle">Choose your region to register for the conference. <br>Both methods lead to the same conference.</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 1.5rem; padding: 1.2rem 1.8rem;">
+                <div style="margin-bottom: 1rem; padding: 0.8rem; background: rgba(200,164,92,0.12); border-radius: 8px; border-left: 3px solid var(--accent); text-align: center;">
+                    <strong style="color: var(--primary); font-size: 1rem;">&#9200; Registration Deadline: July 15</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-mid);">Please note: if we cannot accept more registrations, we will close the registration questionnaire early.</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; font-size: 0.9rem; color: var(--text-mid);">
+                    <div style="display: flex; align-items: flex-start; gap: 0.6rem;">
+                        <span style="font-size: 1.3rem; flex-shrink: 0;">&#128176;</span>
+                        <p style="line-height: 1.6; margin: 0;"><strong style="color: var(--primary);">Financial Support:</strong> We apologize that we are unable to provide financial support for participants other than the invited speakers.</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 0.6rem;">
+                        <span style="font-size: 1.3rem; flex-shrink: 0;">&#127968;</span>
+                        <p style="line-height: 1.6; margin: 0;"><strong style="color: var(--primary);">Hotel Booking:</strong> Please let us know if you need help booking rooms at the conference hotel.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="reg-grid">
@@ -967,7 +1112,7 @@
             <a href="mailto:binbin.xu@hebtu.edu.cn">Contact us</a>
         </p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.35);">
-            Conference on Frontiers of Mathematics &bull; Hyperbolic Geometry &bull; Greg McShane's 60th Birthday
+            Conference on Frontiers of Mathematics &bull; Hyperbolic Geometry &bull; Shijiazhuang 2026
         </p>
     </footer>
 
@@ -1021,7 +1166,7 @@
             }
         }
 
-        const particleCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 25000));
+        const particleCount = Math.min(25, Math.floor((canvas.width * canvas.height) / 40000));
         for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
         function drawConnections() {
@@ -1030,8 +1175,8 @@
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 120) {
-                        const alpha = (1 - distance / 120) * 0.12;
+                    if (distance < 80) {
+                        const alpha = (1 - distance / 80) * 0.08;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -1112,7 +1257,7 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+        }, { root: null, rootMargin: '0px 0px 40px 0px', threshold: 0.01 });
 
         document.querySelectorAll('.card, .reg-card').forEach(function(card) {
             cardObserver.observe(card);
