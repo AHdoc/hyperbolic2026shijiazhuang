@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talks & Abstracts — Hyperbolic 2026 Shijiazhuang</title>
+    <meta name="description" content="Titles and abstracts of all talks at the Hyperbolic 2026 conference in Shijiazhuang.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #e0c78a;
+            --primary: #1a3c5e;
+            --accent: #c8a45c;
+            --text-dark: #1a1a1a;
+            --text-mid: #4a4a4a;
+            --bg-light: #f8f6f0;
+            --radius-lg: 22px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-mid);
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        /* ===== Schedule ===== */
+        .schedule-section {
+            margin-bottom: 3rem;
+        }
+        .schedule-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .day-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .day-box .day-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        .day-box .day-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin: 0.2rem 0;
+        }
+        .day-box .day-tag {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .tag-reg { background: #fff3cd; color: #856404; }
+        .tag-talk { background: #e3f2fd; color: #1565c0; }
+        .tag-free { background: #e8f5e9; color: #2e7d32; }
+
+        .timeline-simple {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .timeline-simple table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .timeline-simple th {
+            text-align: left;
+            padding: 0.4rem 0;
+            color: var(--primary);
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+        }
+        .timeline-simple td {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text-mid);
+        }
+        .timeline-simple tr:last-child td { border-bottom: none; }
+        .time-col { font-weight: 600; color: var(--primary); width: 100px; }
+
+        .note {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        /* ===== Talks ===== */
+        .talks-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .alpha-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 1.5rem;
+        }
+        .alpha-bar a {
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .alpha-bar a:hover { background: var(--primary); color: white; }
+
+        .letter-hr {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1.5rem 0 0.8rem;
+            scroll-margin-top: 20px;
+        }
+        .letter-hr span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 30px;
+        }
+        .letter-hr::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .talk-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            scroll-margin-top: 20px;
+        }
+        .talk-item.placeholder { border-left: 3px solid var(--accent); }
+        .talk-item .speaker {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+        .talk-item .affil {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 0.4rem;
+        }
+        .talk-item .title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+        .talk-item .abstract {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+        .talk-item .abstract em { color: #999; }
+        .tbc {
+            font-size: 0.75rem;
+            color: #fff;
+            background: var(--accent);
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.4rem;
+        }
+        .empty-letter {
+            text-align: center;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1.5rem 1rem; }
+            .day-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="back-link">&#8592; Back to Main Page</a>
+        <h1>Talks & Abstracts</h1>
+        <p class="subtitle">Hyperbolic 2026 Shijiazhuang &mdash; August 31 &ndash; September 4, 2026</p>
+
+        <!-- ===== SCHEDULE ===== -->
+        <div class="schedule-section" id="schedule">
+            <h2>Schedule</h2>
+
+            <p class="note">Speaker assignments to specific time slots have not been finalized. A detailed schedule will be announced by email once confirmed.</p>
+        </div>
+
+        <!-- ===== TALKS ===== -->
+        <div class="talks-section" id="talks">
+            <h2>Talks & Abstracts</h2>
+
+            <div class="alpha-bar">
+                <a href="#A">A</a><a href="#C">C</a><a href="#D">D</a><a href="#H">H</a>
+                <a href="#I">I</a><a href="#K">K</a><a href="#L">L</a><a href="#M">M</a>
+                <a href="#P">P</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a>
+                <a href="#V">V</a><a href="#Y">Y</a><a href="#Z">Z</a>
+            </div>
+
+            <!-- A -->
+            <div class="letter-hr" id="A"><span>A</span></div>
+            <div class="talk-item placeholder" id="speaker-basmajian">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Ara Basmajian</div>
+                <div class="affil">Hunter College / CUNY</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- C -->
+            <div class="letter-hr" id="C"><span>C</span></div>
+            <div class="talk-item placeholder" id="speaker-chen">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Qiyu Chen</div>
+                <div class="affil">South China Univ. of Technology</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- D -->
+            <div class="letter-hr" id="D"><span>D</span></div>
+            <div class="talk-item placeholder" id="speaker-doan">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Nhat Minh Doan</div>
+                <div class="affil">Vietnam Academy of Science & Technology</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- H -->
+            <div class="letter-hr" id="H"><span>H</span></div>
+            <div class="talk-item placeholder" id="speaker-hironaka">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Eriko Hironaka</div>
+                <div class="affil">Florida State University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-huang-yi">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Yi Huang</div>
+                <div class="affil">YMSC, Tsinghua University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- I -->
+            <div class="letter-hr" id="I"><span>I</span></div>
+            <div class="talk-item placeholder" id="speaker-inkang">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Inkang Kim</div>
+                <div class="affil">KIAS</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- K -->
+            <div class="letter-hr" id="K"><span>K</span></div>
+            <div class="talk-item placeholder" id="speaker-youngju">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Youngju Kim</div>
+                <div class="affil">Konkuk University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-kitano">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Teruaki Kitano</div>
+                <div class="affil">Soka University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-kojima">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Sadayoshi Kojima</div>
+                <div class="affil">Institute of Science Tokyo</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- L -->
+            <div class="letter-hr" id="L"><span>L</span></div>
+            <div class="talk-item placeholder" id="speaker-sun-lijie">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Lijie Sun</div>
+                <div class="affil">Osaka Metropolitan University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- M -->
+            <div class="letter-hr" id="M"><span>M</span></div>
+            <div class="talk-item placeholder" id="speaker-markovic">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Vladimir Markovic</div>
+                <div class="affil">YMSC, Tsinghua University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-masai">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Hidetoshi Masai</div>
+                <div class="affil">Musashino Art University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-miyachi">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Hideki Miyachi</div>
+                <div class="affil">Kanazawa University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- P -->
+            <div class="letter-hr" id="P"><span>P</span></div>
+            <div class="talk-item placeholder" id="speaker-parker">
+                <span class="tbc">TBA</span>
+                <div class="speaker">John Parker</div>
+                <div class="affil">Durham University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-parlier">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Hugo Parlier</div>
+                <div class="affil">University of Fribourg</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- R -->
+            <div class="letter-hr" id="R"><span>R</span></div>
+            <div class="talk-item placeholder" id="speaker-reid">
+                <span class="tbc">TBC</span>
+                <div class="speaker">Alan Reid (*)</div>
+                <div class="affil">Rice University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- S -->
+            <div class="letter-hr" id="S"><span>S</span></div>
+            <div class="talk-item placeholder" id="speaker-sakuma">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Makoto Sakuma</div>
+                <div class="affil">Hiroshima University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-sheng">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Xiaobing Sheng</div>
+                <div class="affil">Osaka University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-su">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Weixu Su</div>
+                <div class="affil">Sun Yat-sen University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-sun-zhe">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Zhe Sun</div>
+                <div class="affil">USTC</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- T -->
+            <div class="letter-hr" id="T"><span>T</span></div>
+            <div class="talk-item placeholder" id="speaker-tan">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Ser Peow Tan</div>
+                <div class="affil">National University of Singapore</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- V -->
+            <div class="letter-hr" id="V"><span>V</span></div>
+            <div class="talk-item placeholder" id="speaker-vo">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Hanh Vo</div>
+                <div class="affil">Purdue University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- Y -->
+            <div class="letter-hr" id="Y"><span>Y</span></div>
+            <div class="talk-item placeholder" id="speaker-yamashita">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Yasushi Yamashita</div>
+                <div class="affil">Chuo University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+            <div class="talk-item placeholder" id="speaker-yibo">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Yibo Zhang</div>
+                <div class="affil">Sun Yat-sen University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+            <!-- Z -->
+            <div class="letter-hr" id="Z"><span>Z</span></div>
+            <div class="talk-item placeholder" id="speaker-zheng">
+                <span class="tbc">TBA</span>
+                <div class="speaker">Fangting Zheng</div>
+                <div class="affil">Xi'an Jiaotong-Liverpool University</div>
+                <div class="title"><em>Title not yet available</em></div>
+                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
