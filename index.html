@@ -783,9 +783,36 @@
                     <span class="stat-label">Organizers</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="87">0</span>
+                    <span class="stat-number" id="days-counter" data-target="87">0</span>
                     <span class="stat-label">Days to Go</span>
                 </div>
+
+                <script>
+                  (function() {
+                    const targetDate = new Date("2026-08-31T00:00:00"); // local midnight
+                    const counterEl = document.getElementById('days-counter');
+
+                    function updateDaysLeft() {
+                      const now = Date.now();
+                      const distance = targetDate.getTime() - now;
+
+                      const daysLeft = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+
+                      counterEl.setAttribute('data-target', daysLeft);
+                      counterEl.textContent = daysLeft;
+                    }
+
+                    updateDaysLeft();
+
+                    const timeToMidnight =
+                      new Date().setHours(24, 0, 0, 0) - Date.now();
+                    setTimeout(() => {
+                      updateDaysLeft();
+                      setInterval(updateDaysLeft, 86400000); // every 24 hours
+                    }, timeToMidnight);
+                  })();
+                </script>
+                
             </div>
         </section>
 
@@ -811,13 +838,13 @@
             <div class="card">
                 <h3><span class="icon">&#128203;</span> Organizers</h3>
                 <ul class="name-list">
+                    <li><strong>Liping Yuan</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Richeng Li</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                    <li><strong>Binbin Xu</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Xiang Liu</strong><br><span class="affiliation">Hebei Normal University</span></li>
+                    <li><strong>Jun Wang</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Hidetoshi Masai</strong><br><span class="affiliation">Musashino Art University</span></li>
                     <li><strong>Xiaobing Sheng</strong><br><span class="affiliation">Osaka University</span></li>
-                    <li><strong>Jun Wang</strong><br><span class="affiliation">Hebei Normal University</span></li>
-                    <li><strong>Binbin Xu</strong><br><span class="affiliation">Hebei Normal University</span></li>
-                    <li><strong>Liping Yuan</strong><br><span class="affiliation">Hebei Normal University</span></li>
                     <li><strong>Yibo Zhang</strong><br><span class="affiliation">Sun Yat-sen University</span></li>
                 </ul>
             </div>
