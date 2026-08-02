@@ -142,6 +142,78 @@
             margin-top: 1rem;
         }
 
+        /* ===== Speaker Quick List ===== */
+        .speaker-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .speaker-nav h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        .speaker-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+        }
+        .speaker-nav li a {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-decoration: none;
+            border: 1px solid #dce3eb;
+            border-radius: 20px;
+            transition: all 0.15s ease;
+        }
+        .speaker-nav li a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* ===== Poster ===== */
+        .poster-section {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .poster-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            text-align: left;
+        }
+        .poster-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+        .poster-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s ease;
+        }
+        .poster-link:hover {
+            border-bottom: 1px solid var(--primary);
+        }
+
         /* ===== Talks ===== */
         .talks-section h2 {
             font-family: 'Playfair Display', serif;
@@ -197,7 +269,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
             scroll-margin-top: 20px;
         }
-        .talk-item.placeholder { border-left: 3px solid var(--accent); }
         .talk-item .speaker {
             font-weight: 700;
             color: var(--primary);
@@ -229,19 +300,12 @@
             display: inline-block;
             margin-bottom: 0.4rem;
         }
-        .empty-letter {
-            text-align: center;
-            color: #bbb;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
 
         @media (max-width: 768px) {
             body { padding: 1.5rem 1rem; }
             .day-grid { grid-template-columns: 1fr; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -257,222 +321,175 @@
             <p class="note">Speaker assignments to specific time slots have not been finalized. A detailed schedule will be announced by email once confirmed.</p>
         </div>
 
+        <!-- ===== SPEAKER NAVIGATION ===== -->
+        <nav class="speaker-nav">
+            <h2>Speakers</h2>
+            <ul>
+                <li><a href="#ara-basmajian">Ara Basmajian</a></li>
+                <li><a href="#qiyu-chen">Qiyu Chen</a></li>
+                <li><a href="#nhat-minh-doan">Nhat Minh Doan</a></li>
+                <li><a href="#yi-huang">Yi Huang</a></li>
+                <li><a href="#inkang-kim">Inkang Kim</a></li>
+                <li><a href="#youngju-kim">Youngju Kim</a></li>
+                <li><a href="#john-parker">John Parker</a></li>
+                <li><a href="#hugo-parlier">Hugo Parlier</a></li>
+                <li><a href="#xiaobing-sheng">Xiaobing Sheng</a></li>
+                <li><a href="#weixu-su">Weixu Su</a></li>
+                <li><a href="#lijie-sun">Lijie Sun</a></li>
+                <li><a href="#zhe-sun">Zhe Sun</a></li>
+                <li><a href="#yibo-zhang">Yibo Zhang</a></li>
+                <li><a href="#fangting-zheng">Fangting Zheng</a></li>
+            </ul>
+        </nav>
+
+        <!-- ===== POSTER ===== -->
+        <div class="poster-section" id="poster">
+            <h2>Conference Poster</h2>
+            <a href="poster.jpg" target="_blank">
+                <img src="poster.jpg" alt="Hyperbolic 2026 Shijiazhuang Conference Poster">
+            </a>
+            <a class="poster-link" href="poster.jpg" target="_blank" download>Download poster (JPG)</a>
+        </div>
+
         <!-- ===== TALKS ===== -->
         <div class="talks-section" id="talks">
-            <h2>Talks & Abstracts</h2>
-
-            <div class="alpha-bar">
-                <a href="#B">B</a><a href="#C">C</a><a href="#D">D</a><a href="#H">H</a>
-                <a href="#K">K</a><a href="#M">M</a><a href="#P">P</a><a href="#R">R</a>
-                <a href="#S">S</a><a href="#V">V</a><a href="#Y">Y</a><a href="#Z">Z</a>
-            </div>
+            <h2>Abstracts</h2>
 
             <!-- B -->
             <div class="letter-hr" id="B"><span>B</span></div>
-            <div class="talk-item placeholder" id="speaker-basmajian">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="ara-basmajian">
                 <div class="speaker">Ara Basmajian</div>
                 <div class="affil">Hunter College / CUNY</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- C -->
             <div class="letter-hr" id="C"><span>C</span></div>
-            <div class="talk-item placeholder" id="speaker-chen">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="qiyu-chen">
                 <div class="speaker">Qiyu Chen</div>
-                <div class="affil">South China Univ. of Technology</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <div class="affil">South China University of Technology</div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- D -->
             <div class="letter-hr" id="D"><span>D</span></div>
-            <div class="talk-item placeholder" id="speaker-doan">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="nhat-minh-doan">
                 <div class="speaker">Nhat Minh Doan</div>
-                <div class="affil">Vietnam Academy of Science & Technology</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <div class="affil">Vietnam Academy of Science &amp; Technology</div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- H -->
             <div class="letter-hr" id="H"><span>H</span></div>
-            <div class="talk-item placeholder" id="speaker-hironaka">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Eriko Hironaka</div>
-                <div class="affil">Florida State University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-huang-yi">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="yi-huang">
                 <div class="speaker">Yi Huang</div>
                 <div class="affil">YMSC, Tsinghua University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- K -->
             <div class="letter-hr" id="K"><span>K</span></div>
-            <div class="talk-item placeholder" id="speaker-inkang">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="inkang-kim">
                 <div class="speaker">Inkang Kim</div>
                 <div class="affil">KIAS</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-youngju">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="youngju-kim">
                 <div class="speaker">Youngju Kim</div>
                 <div class="affil">Konkuk University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-kitano">
                 <span class="tbc">TBA</span>
-                <div class="speaker">Teruaki Kitano</div>
-                <div class="affil">Soka University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-kojima">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Sadayoshi Kojima</div>
-                <div class="affil">Institute of Science Tokyo</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-
-            <!-- L -->
-            <!-- (no speakers with family name starting in L) -->
-
-            <!-- M -->
-            <div class="letter-hr" id="M"><span>M</span></div>
-            <div class="talk-item placeholder" id="speaker-markovic">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Vladimir Markovic</div>
-                <div class="affil">YMSC, Tsinghua University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-masai">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Hidetoshi Masai</div>
-                <div class="affil">Musashino Art University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-miyachi">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Hideki Miyachi</div>
-                <div class="affil">Kanazawa University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- P -->
             <div class="letter-hr" id="P"><span>P</span></div>
-            <div class="talk-item placeholder" id="speaker-parker">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="john-parker">
                 <div class="speaker">John Parker</div>
                 <div class="affil">Durham University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-parlier">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="hugo-parlier">
                 <div class="speaker">Hugo Parlier</div>
                 <div class="affil">University of Fribourg</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-
-            <!-- R -->
-            <div class="letter-hr" id="R"><span>R</span></div>
-            <div class="talk-item placeholder" id="speaker-reid">
-                <span class="tbc">TBC</span>
-                <div class="speaker">Alan Reid (*)</div>
-                <div class="affil">Rice University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- S -->
             <div class="letter-hr" id="S"><span>S</span></div>
-            <div class="talk-item placeholder" id="speaker-sakuma">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Makoto Sakuma</div>
-                <div class="affil">Hiroshima University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-sheng">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="xiaobing-sheng">
                 <div class="speaker">Xiaobing Sheng</div>
                 <div class="affil">Osaka University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-su">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="weixu-su">
                 <div class="speaker">Weixu Su</div>
                 <div class="affil">Sun Yat-sen University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-sun-lijie">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="lijie-sun">
                 <div class="speaker">Lijie Sun</div>
                 <div class="affil">Osaka Metropolitan University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-sun-zhe">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="zhe-sun">
                 <div class="speaker">Zhe Sun</div>
                 <div class="affil">USTC</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-
-            <!-- V -->
-            <div class="letter-hr" id="V"><span>V</span></div>
-            <div class="talk-item placeholder" id="speaker-vo">
                 <span class="tbc">TBA</span>
-                <div class="speaker">Hanh Vo</div>
-                <div class="affil">Purdue University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-
-            <!-- Y -->
-            <div class="letter-hr" id="Y"><span>Y</span></div>
-            <div class="talk-item placeholder" id="speaker-yamashita">
-                <span class="tbc">TBA</span>
-                <div class="speaker">Yasushi Yamashita</div>
-                <div class="affil">Chuo University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
             <!-- Z -->
             <div class="letter-hr" id="Z"><span>Z</span></div>
-            <div class="talk-item placeholder" id="speaker-yibo">
-                <span class="tbc">TBA</span>
+
+            <article class="talk-item" id="yibo-zhang">
                 <div class="speaker">Yibo Zhang</div>
                 <div class="affil">Sun Yat-sen University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
-            <div class="talk-item placeholder" id="speaker-zheng">
                 <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
+
+            <article class="talk-item" id="fangting-zheng">
                 <div class="speaker">Fangting Zheng</div>
                 <div class="affil">Xi'an Jiaotong-Liverpool University</div>
-                <div class="title"><em>Title not yet available</em></div>
-                <div class="abstract"><em>Abstract will be posted once received from the speaker.</em></div>
-            </div>
+                <span class="tbc">TBA</span>
+                <div class="title">Title to be announced</div>
+                <div class="abstract"><em>Abstract will be available soon.</em></div>
+            </article>
 
         </div>
 
